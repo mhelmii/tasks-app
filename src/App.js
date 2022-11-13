@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+import NewTaskForm from "./components/NewTaskForm/NewTaskForm";
+import TasksList from "./components/TasksList/TasksList";
+
+import classes from "./App.module.css";
+const App = () => {
+  const [initTasks, setInitTasks] = useState([]);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("Tasks"));
+    if (data) {
+      setInitTasks(data);
+    }
+  }, []);
+
+  const addNewTask = (input) => {
+    setInitTasks((preState) => {
+      return [...preState, { id: Math.random().toString(), content: input }];
+    });
+  };
+
+  const deleteTaskHandler = (taskId) => {
+    setInitTasks((list) => list.filter((task) => task.id !== taskId));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("Tasks", JSON.stringify(initTasks));
+  }, [initTasks]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <div className={classes.container}>
+        <section className={classes.form}>
+          <NewTaskForm onAddTask={addNewTask} />
+        </section>
+        <section className={classes.tasks}>
+          <TasksList tasks={initTasks} onDelete={deleteTaskHandler} />;
+        </section>
+      </div>
+    </React.Fragment>
   );
-}
+};
 
 export default App;

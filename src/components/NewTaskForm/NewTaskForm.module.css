@@ -1,0 +1,89 @@
+.new-task {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.new-task input {
+  width: 70%;
+  padding: 12px 12px;
+  font-size: 12px;
+  border: 0.5px solid #ccc;
+  border-radius: 3px;
+}
+
+.new-task input.invalid {
+  border-color: red;
+  background-color: #ff00001a;
+}
+
+.new-task p.empty-task {
+  color: red;
+  font-weight: bold;
+}
+
+.new-task input:focus {
+  outline: none;
+}
+
+.new-task button {
+  cursor: pointer;
+  padding: 15px 40px;
+  background-color: #6eabec;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.new-task button:hover {
+  background-color: #2875c7;
+}
+
+@media (max-width: 767px) {
+  .new-task {
+    width: 70%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 9rem;
+  }
+  .new-task input {
+    width: 100%;
+  }
+
+  .new-task button {
+    align-self: flex-end;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-task {
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 9rem;
+  }
+  .new-task input {
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .new-task button {
+    align-self: flex-end;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-task button {
+    margin-right: 20px;
+  }
+}
