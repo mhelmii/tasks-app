@@ -35,7 +35,7 @@ const App = () => {
           <NewTaskForm onAddTask={addNewTask} />
         </section>
         <section className={classes.tasks}>
-          <TasksList tasks={initTasks} onDelete={deleteTaskHandler} />;
+          <TasksList tasks={initTasks} onDelete={deleteTaskHandler} />
         </section>
       </div>
     </React.Fragment>

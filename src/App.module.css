@@ -3,6 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation-name: appear;
+  animation-duration: 2s;
 }
 
 .form {
@@ -25,6 +27,8 @@
   border-radius: 5px;
   padding: 10px 0px;
   box-shadow: 0px 0px 8px #bbb2b2;
+  animation-name: list-appear;
+  animation-duration: 2s;
 }
 
 @media (max-width: 767px) {
@@ -57,5 +61,23 @@
   .tasks {
     width: 35%;
     min-width: fit-content;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes list-appear {
+  from {
+    transform: translateY(5rem);
+  }
+  to {
+    transform: translateY(0);
   }
 }
